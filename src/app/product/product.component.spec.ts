@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ProductComponent } from './product.component';
 import { Product } from '../model/product';
@@ -9,9 +9,8 @@ describe('ProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -25,4 +24,21 @@ describe('ProductComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an "addToBasket" event when "add" button is clicked', waitForAsync(async () => {
+    const outputSpy = spyOn(component.addToBasket, 'emit')
+    fixture.nativeElement.querySelector('button').click();
+    await fixture.whenStable()
+    expect(outputSpy).toHaveBeenCalled();
+  }));
+
+  it('should add "last" css class when product stock equals 1', () => {
+    expect(fixture.nativeElement.querySelector('.thumbnail').classList.contains('last')).toBeFalsy();
+
+    component.data = { ...component.data, stock: 1 };
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.thumbnail').classList.contains('last')).toBeTrue();
+  });
+
 });
