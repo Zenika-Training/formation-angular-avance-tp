@@ -1,0 +1,14 @@
+{
+  "MENU.ACCESS_BASKET": "Access Basket",
+  "FOOTER.COPYRIGHT": "Copyright © Your Website 2020",
+  "HOME.TITLE": "Welcome on Zenika Ecommerce",
+  "HOME.BASKET_TOTAL": "Your basket amount is {{total}}",
+  "HOME.LAST_PRODUCT": "Last Products",
+  "PRODUCT.ADD_TO_BASKET": "Add to basket",
+  "BASKET.TITLE": "Basket",
+  "BASKET.FORM.TITLE": "Order",
+  "BASKET.FORM.NAME": "Name",
+  "BASKET.FORM.ADDRESS": "Address",
+  "BASKET.FORM.CREDIT_CARD": "Credit card number",
+  "BASKET.FORM.SUBMIT": "Validate"
+}
