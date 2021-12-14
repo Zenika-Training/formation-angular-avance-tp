@@ -6,8 +6,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './core/layout/menu/menu.component';
 import { BasketModule } from './basket/basket.module'
 import { CatalogModule } from './catalog/catalog.module'
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
 export const WELCOME_MESSAGE = new InjectionToken('welcomeMsg')
+
+export function HttpLoaderFactory (http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -17,12 +24,22 @@ export const WELCOME_MESSAGE = new InjectionToken('welcomeMsg')
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BasketModule,
-    CatalogModule
+    CatalogModule,
   ],
   providers: [
     { provide: WELCOME_MESSAGE, useValue: 'Bienvenue sur Zenika Ecommerce' }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

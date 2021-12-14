@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component'
 import { CatalogComponent } from './pages/catalog.component'
 import { RouterModule } from '@angular/router'
+import { TranslateModule } from '@ngx-translate/core'
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router'
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ]
 })
 export class CatalogModule { }
