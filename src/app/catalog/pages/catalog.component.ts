@@ -1,18 +1,19 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 
 import { Product } from '../../core/models/product';
 import { CatalogService } from '../shared/catalog.service'
 import { BasketService } from '../../basket/shared/basket.service'
 import { WELCOME_MESSAGE } from '../../app.module'
-import { Observable } from 'rxjs'
+import { Observable, tap } from 'rxjs'
 
 @Component({
   selector: 'app-home',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CatalogComponent implements OnInit {
-  products: Product[] = [];
+  products$!: Observable<Product[]>;
 
   constructor (@Inject(WELCOME_MESSAGE) public title: string,
                private catalogService: CatalogService,
@@ -21,9 +22,7 @@ export class CatalogComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.catalogService.fetchProducts().subscribe(products => {
-      this.products = products;
-    });
+    this.products$ = this.catalogService.fetchProducts()
   }
 
   getTotal (): Observable<number> {
