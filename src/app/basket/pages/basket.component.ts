@@ -1,15 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../core/models/product';
 import { Customer } from '../../core/models/customer';
 import { BasketService } from '../shared/basket.service'
-import { Observable, Subscription } from 'rxjs'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss']
+  styleUrls: ['./basket.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasketComponent implements OnInit {
   basket$!: Observable<Product[]>;

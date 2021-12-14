@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Product } from '../../../core/models/product';
 import { CatalogService } from '../../shared/catalog.service'
@@ -6,10 +6,11 @@ import { CatalogService } from '../../shared/catalog.service'
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductComponent {
-  @Input() data = {} as Product;
+  @Input() data!: Product;
   @Output() addToBasket = new EventEmitter<Product>();
 
   constructor (private catalogService: CatalogService) {
