@@ -4,6 +4,7 @@ import { Product } from '../../core/models/product';
 import { CatalogService } from '../shared/catalog.service'
 import { BasketService } from '../../basket/shared/basket.service'
 import { WELCOME_MESSAGE } from '../../app.module'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-home',
@@ -20,12 +21,12 @@ export class CatalogComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.catalogService.fetchProducts().then(products => {
+    this.catalogService.fetchProducts().subscribe(products => {
       this.products = products;
     });
   }
 
-  getTotal (): number {
+  getTotal (): Observable<number> {
     return this.basketService.getTotal()
   }
 

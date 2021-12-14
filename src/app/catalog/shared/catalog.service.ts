@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../core/models/product'
+import { BehaviorSubject, delay, Observable, of } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
 
-  private products: Product[] = [
+  private products$ = new BehaviorSubject<Product[]>([
     {
       title: 'Coding the weslch',
       description: 'Tee-shirt col rond - Homme',
@@ -35,21 +36,27 @@ export class CatalogService {
       price: 19,
       stock: 2
     }
-  ];
+  ]);
 
 
-  constructor() { }
+  constructor () {
+  }
 
-  fetchProducts(): Promise<Product[]> {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(this.products);
-      }, 500);
-    })
+  fetchProducts (): Observable<Product[]> {
+    return this.products$.pipe(
+      delay(500)
+    )
   }
 
   decrementStock (product: Product) {
-    product.stock--;
+    let existingProducts = this.products$.getValue()
+    let newProducts = existingProducts.map(p => {
+      if (p === product) {
+        p.stock--;
+      }
+      return p;
+    })
+    this.products$.next(newProducts)
   }
 
   isAvailable (product: Product) {
