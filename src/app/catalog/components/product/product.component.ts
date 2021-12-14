@@ -1,6 +1,7 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 
-import { Product } from '../model/product';
+import { Product } from '../../../core/models/product';
+import { CatalogService } from '../../shared/catalog.service'
 
 @Component({
   selector: 'app-product',
@@ -11,12 +12,15 @@ export class ProductComponent {
   @Input() data = {} as Product;
   @Output() addToBasket = new EventEmitter<Product>();
 
+  constructor (private catalogService: CatalogService) {
+  }
+
   addToBasketClick(): void {
     this.addToBasket.emit(this.data);
   }
 
   isTheLast(): boolean {
-    return this.data.stock === 1;
+    return this.catalogService.isTheLast(this.data);
   }
 
 }

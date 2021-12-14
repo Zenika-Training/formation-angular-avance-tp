@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from '../model/product';
-import { Customer } from '../model/customer';
+import { Product } from '../../core/models/product';
+import { Customer } from '../../core/models/customer';
+import { BasketService } from '../shared/basket.service'
 
 @Component({
   selector: 'app-basket',
@@ -13,15 +14,15 @@ export class BasketComponent {
   basket: Product[] = [];
   customer: Customer;
 
-  constructor(private router: Router) {
-    this.basket = (window as any).basket;
+  constructor(private router: Router, private basketService: BasketService) {
+    this.basket = this.basketService.getBasket();
     this.customer = new Customer();
   }
 
   checkout(e: Event):void {
     e.stopPropagation();
     e.preventDefault();
-    (window as any).basket = [];
+    this.basketService.checkout()
     this.router.navigate(['']);
   }
 }
