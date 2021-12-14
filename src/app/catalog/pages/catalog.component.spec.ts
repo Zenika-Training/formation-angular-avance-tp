@@ -2,15 +2,15 @@ import { CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { HomeComponent } from './home.component';
+import { CatalogComponent } from './catalog.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: CatalogComponent;
+  let fixture: ComponentFixture<CatalogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ CatalogComponent ],
       imports: [ RouterTestingModule ],
       providers: [ { provide: 'welcomeMsg', useValue: 'Welcome on unit test' } ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -18,7 +18,7 @@ describe('HomeComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(CatalogComponent);
     component = fixture.componentInstance;
 
     fixture.detectChanges();
