@@ -1,0 +1,29 @@
+
+<div class="card mt-3">
+  <div class="card-header">{{ "BASKET.FORM.TITLE" | translate }}</div>
+
+  <div class="card-body">
+    <form [formGroup]="form" (submit)="checkout($event)">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.NAME" | translate }}</mat-label>
+        <input matInput data-cy="name-field" id="name" formControlName="customerName" name="name" [placeholder]="'BASKET.FORM.NAME' | translate">
+        <mat-error *ngIf="nameField.hasError('required')">{{ "BASKET.FORM.ERROR.REQUIRED.NAME" | translate }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.ADDRESS" | translate }}</mat-label>
+        <textarea matInput data-cy="address-field" id="address" formControlName="address" name="address" [placeholder]="'BASKET.FORM.ADDRESS' | translate"></textarea>
+        <mat-error *ngIf="addressField.hasError('required')">{{ "BASKET.FORM.ERROR.REQUIRED.ADDRESS" | translate }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.CREDIT_CARD" | translate }}</mat-label>
+        <input matInput data-cy="credit-card-field" id="creditCard" formControlName="creditCard" name="creditCard" [placeholder]="'BASKET.FORM.CREDIT_CARD' | translate">
+        <mat-error *ngIf="creditCardField.hasError('required')">{{ "BASKET.FORM.ERROR.REQUIRED.CREDIT_CARD" | translate }}</mat-error>
+        <mat-error *ngIf="creditCardField.hasError('pattern')">{{ "BASKET.FORM.ERROR.INVALID.CREDIT_CARD" | translate }}</mat-error>
+      </mat-form-field>
+
+      <button [disabled]="form.invalid" data-cy="validate-basket" mat-raised-button color="accent" type="submit" class="btn btn-success pull-right">{{ "BASKET.FORM.SUBMIT" | translate }}</button>
+    </form>
+  </div>
+</div>

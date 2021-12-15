@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Product } from '../../core/models/product';
 import { Customer } from '../../core/models/customer';
 import { BasketService } from '../shared/basket.service'
-import { Observable } from 'rxjs'
+import { Observable, tap } from 'rxjs'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-basket',
@@ -16,19 +17,12 @@ export class BasketComponent implements OnInit {
   basket$!: Observable<Product[]>;
   customer!: Customer;
 
-  constructor(private router: Router, private basketService: BasketService) {
+  constructor (private router: Router, private basketService: BasketService) {
   }
 
 
   ngOnInit (): void {
-    this.basket$ = this.basketService.getBasket();
-    this.customer = new Customer();
+    this.basket$ = this.basketService.getBasket()
   }
 
-  checkout(e: Event):void {
-    e.stopPropagation();
-    e.preventDefault();
-    this.basketService.checkout()
-    this.router.navigate(['']);
-  }
 }

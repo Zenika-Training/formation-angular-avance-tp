@@ -10,5 +10,10 @@
   "BASKET.FORM.NAME": "Nom",
   "BASKET.FORM.ADDRESS": "Adresse",
   "BASKET.FORM.CREDIT_CARD": "N° Carte de crédit",
-  "BASKET.FORM.SUBMIT": "Valider"
+  "BASKET.FORM.SUBMIT": "Valider",
+  "BASKET.FORM.ERROR.REQUIRED.NAME": "Nom requis",
+  "BASKET.FORM.ERROR.REQUIRED.ADDRESS": "Adresse requise",
+  "BASKET.FORM.ERROR.REQUIRED.CREDIT_CARD": "N° de carte de crédit requis",
+  "BASKET.FORM.ERROR.INVALID.CREDIT_CARD": "N° de carte de crédit invalide",
+  "BASKET.FORM.ERROR.EMPTY": "Le panier est vide"
 }

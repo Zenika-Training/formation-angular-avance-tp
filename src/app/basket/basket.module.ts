@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BasketComponent } from './pages/basket.component'
 import { RouterModule } from '@angular/router'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { MatListModule } from '@angular/material/list'
 import { MatChipsModule } from '@angular/material/chips'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { PaiementComponent } from './pages/paiement/paiement.component';
+import { PaiementConfirmedComponent } from './pages/paiement-confirmed/paiement-confirmed.component'
 
 
 @NgModule({
   declarations: [
-    BasketComponent
+    BasketComponent,
+    PaiementComponent,
+    PaiementConfirmedComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,13 @@ import { MatButtonModule } from '@angular/material/button'
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([
+      { path: '', redirectTo: 'paiement', pathMatch: 'full'},
+      { path: 'paiement', component: PaiementComponent },
+      { path: 'confirmed', component: PaiementConfirmedComponent },
+    ])
   ]
 })
 export class BasketModule {

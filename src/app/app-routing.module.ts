@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { CatalogComponent } from './catalog/pages/catalog.component';
-import { BasketComponent } from './basket/pages/basket.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: CatalogComponent },
-  { path: 'basket', component: BasketComponent }
+  {
+    path: '',
+    loadChildren: () => import("./catalog/catalog.module").then(m => m.CatalogModule)
+  },
+  {
+    path: 'basket',
+    loadChildren: () => import("./basket/basket.module").then(m => m.BasketModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

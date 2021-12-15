@@ -16,7 +16,11 @@ import { MatButtonModule } from '@angular/material/button'
     CommonModule,
     RouterModule,
     TranslateModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forChild([
+      { path: '', component: CatalogComponent }
+    ])
   ]
 })
-export class CatalogModule { }
+export class CatalogModule {
+}

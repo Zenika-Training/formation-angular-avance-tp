@@ -10,5 +10,10 @@
   "BASKET.FORM.NAME": "Name",
   "BASKET.FORM.ADDRESS": "Address",
   "BASKET.FORM.CREDIT_CARD": "Credit card number",
-  "BASKET.FORM.SUBMIT": "Validate"
+  "BASKET.FORM.SUBMIT": "Validate",
+  "BASKET.FORM.ERROR.REQUIRED.NAME": "Name required",
+  "BASKET.FORM.ERROR.REQUIRED.ADDRESS": "Address required",
+  "BASKET.FORM.ERROR.REQUIRED.CREDIT_CARD": "Credit card number required",
+  "BASKET.FORM.ERROR.INVALID.CREDIT_CARD": "Invalid credit card number",
+  "BASKET.FORM.ERROR.EMPTY": "Basket is empty"
 }
