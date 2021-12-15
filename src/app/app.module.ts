@@ -23,7 +23,7 @@ export function HttpLoaderFactory (http: HttpClient) {
     MenuComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
