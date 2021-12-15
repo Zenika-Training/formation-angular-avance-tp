@@ -1,4 +1,6 @@
-<div class="product-item thumbnail card" [ngClass]="{ last: isTheLast() }">
+<div class="product-item thumbnail card"
+     [@stockStatus]="isTheLast() ? 'last' : 'available'"
+     [ngClass]="{ last: isTheLast() }">
     <img [src]="data.photo" alt="t-shirt" class="card-img">
     <div class="card-body">
         <h3>{{ data.title | uppercase }} - {{ data.price | currency:'EUR' }}</h3>
@@ -6,6 +8,6 @@
     </div>
 
     <div class="card-footer">
-        <button class="btn btn-primary" (click)="addToBasketClick()">{{ "PRODUCT.ADD_TO_BASKET" | translate }}</button>
+        <button mat-raised-button (click)="addToBasketClick()">{{ "PRODUCT.ADD_TO_BASKET" | translate }}</button>
     </div>
 </div>

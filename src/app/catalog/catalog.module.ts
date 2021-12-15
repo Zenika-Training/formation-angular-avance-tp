@@ -4,6 +4,7 @@ import { ProductComponent } from './components/product/product.component'
 import { CatalogComponent } from './pages/catalog.component'
 import { RouterModule } from '@angular/router'
 import { TranslateModule } from '@ngx-translate/core'
+import { MatButtonModule } from '@angular/material/button'
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TranslateModule } from '@ngx-translate/core'
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    MatButtonModule
   ]
 })
 export class CatalogModule { }

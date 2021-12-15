@@ -2,7 +2,7 @@
   <h1>{{ title | translate }}</h1>
 
   <p>{{ "HOME.BASKET_TOTAL" | translate: { total: getTotal() | async | currency:'EUR' } }}</p>
-  <p><a class="btn btn-primary btn-large" [routerLink]="['/basket']">{{ "MENU.ACCESS_BASKET" | translate }}</a></p>
+  <p><a mat-raised-button [routerLink]="['/basket']">{{ "MENU.ACCESS_BASKET" | translate }}</a></p>
 </header>
 
 <hr>

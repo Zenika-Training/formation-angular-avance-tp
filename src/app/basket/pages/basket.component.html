@@ -1,11 +1,15 @@
 <div class="card">
   <div class="card-header">{{ "BASKET.TITLE" | translate }}</div>
 
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let product of basket$ | async">
-      {{product.title}} <span class="label label-primary pull-right">{{product.price | currency:'EUR'}}</span>
-    </li>
-  </ul>
+  <mat-list>
+    <mat-list-item *ngFor="let product of basket$ | async">
+      <span matLine>{{ product.title }}</span>
+      <mat-chip-list>
+        <mat-chip>{{ product.price | currency:'EUR' }}</mat-chip>
+      </mat-chip-list>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
 </div>
 
 <div class="card mt-3">
@@ -13,22 +17,22 @@
 
   <div class="card-body">
     <form (submit)="checkout($event)">
-      <div class="form-group">
-        <label class="control-label" for="name">{{ "BASKET.FORM.NAME" | translate }}</label>
-        <input type="text" id="name" class="form-control" name="name">
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.NAME" | translate }}</mat-label>
+        <input matInput id="name" name="name" [placeholder]="'BASKET.FORM.NAME' | translate">
+      </mat-form-field>
 
-      <div class="form-group">
-        <label class="control-label" for="address">{{ "BASKET.FORM.ADDRESS" | translate }}</label>
-        <textarea id="address" class="form-control" name="address"></textarea>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.ADDRESS" | translate }}</mat-label>
+        <textarea matInput id="address" name="address" [placeholder]="'BASKET.FORM.ADDRESS' | translate"></textarea>
+      </mat-form-field>
 
-      <div class="form-group">
-        <label class="control-label" for="creditCard">{{ "BASKET.FORM.CREDIT_CARD" | translate }}</label>
-        <input id="creditCard" class="form-control" name="creditCard">
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "BASKET.FORM.CREDIT_CARD" | translate }}</mat-label>
+        <input matInput id="creditCard" name="creditCard" [placeholder]="'BASKET.FORM.CREDIT_CARD' | translate">
+      </mat-form-field>
 
-      <button type="submit" class="btn btn-success pull-right">{{ "BASKET.FORM.SUBMIT" | translate }}</button>
+      <button data-cy="validate-basket" mat-raised-button color="accent" type="submit">{{ "BASKET.FORM.SUBMIT" | translate }}</button>
     </form>
   </div>
 </div>
