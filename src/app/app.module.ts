@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './core/layout/menu/menu.component';
-import { BasketModule } from './basket/basket.module'
-import { CatalogModule } from './catalog/catalog.module'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -36,8 +34,6 @@ export function HttpLoaderFactory (http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    BasketModule,
-    CatalogModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,

@@ -12,27 +12,4 @@
   </mat-list>
 </div>
 
-<div class="card mt-3">
-  <div class="card-header">{{ "BASKET.FORM.TITLE" | translate }}</div>
-
-  <div class="card-body">
-    <form (submit)="checkout($event)">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "BASKET.FORM.NAME" | translate }}</mat-label>
-        <input matInput id="name" name="name" [placeholder]="'BASKET.FORM.NAME' | translate">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "BASKET.FORM.ADDRESS" | translate }}</mat-label>
-        <textarea matInput id="address" name="address" [placeholder]="'BASKET.FORM.ADDRESS' | translate"></textarea>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "BASKET.FORM.CREDIT_CARD" | translate }}</mat-label>
-        <input matInput id="creditCard" name="creditCard" [placeholder]="'BASKET.FORM.CREDIT_CARD' | translate">
-      </mat-form-field>
-
-      <button data-cy="validate-basket" mat-raised-button color="accent" type="submit">{{ "BASKET.FORM.SUBMIT" | translate }}</button>
-    </form>
-  </div>
-</div>
+<router-outlet></router-outlet>
