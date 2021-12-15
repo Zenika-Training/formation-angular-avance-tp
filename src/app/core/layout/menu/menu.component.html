@@ -1,16 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" role="navigation">
+<mat-toolbar color="primary">
+  <a id="brand" [routerLink]="['/']">Zenika Ecommerce</a>
 
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']">Zenika Ecommerce</a>
-
-
-      <ul class="navbar-nav">
-        <li class="nav-item nav-link" (click)="setLang('en')">English</li>
-        <li class="nav-item nav-link" (click)="setLang('fr')">Français</li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/basket']">{{ "MENU.ACCESS_BASKET" | translate }}</a>
-        </li>
-      </ul>
-
-  </div>
-</nav>
+  <section>
+    <button mat-button (click)="setLang('en')">English</button>
+    <button mat-button (click)="setLang('fr')">Français</button>
+    <a data-cy="go-to-basket" mat-button [routerLink]="['/basket']">{{ "MENU.ACCESS_BASKET" | translate }}</a>
+  </section>
+</mat-toolbar>

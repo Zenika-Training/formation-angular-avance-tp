@@ -8,7 +8,10 @@ import { BasketModule } from './basket/basket.module'
 import { CatalogModule } from './catalog/catalog.module'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatButtonModule } from '@angular/material/button'
 
 export const WELCOME_MESSAGE = new InjectionToken('welcomeMsg')
 
@@ -35,6 +38,9 @@ export function HttpLoaderFactory (http: HttpClient) {
     }),
     BasketModule,
     CatalogModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [
     { provide: WELCOME_MESSAGE, useValue: 'Bienvenue sur Zenika Ecommerce' }
